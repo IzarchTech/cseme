@@ -1,6 +1,6 @@
 use crate::traits::{
     concrete::{VolumeOfBlinding, VolumeOfConcrete},
-    excavation::Excavation,
+    excavation::Excavation, formwork::AreaOfFormwork,
 };
 
 pub(crate) struct Drain {
@@ -59,7 +59,7 @@ impl VolumeOfConcrete for Drain {
 
 impl VolumeOfBlinding for Drain {
     fn get_volume_of_blinding(&self) -> f64 {
-        self.get_excavation_width() * self.get_excavation_depth() * self.span
+        self.get_excavation_width() * self.blinding_thickness * self.span
     }
 }
 
@@ -70,5 +70,11 @@ impl Excavation for Drain {
 
     fn get_volume_of_cart_away(&self) -> f64 {
         self.get_excavation_depth() * self.get_drain_width() * self.span
+    }
+}
+
+impl AreaOfFormwork for Drain {
+    fn get_area_of_formwork(&self) -> f64 {
+        (self.depth + self.get_drain_depth()) * (2.0 * self.span)
     }
 }
