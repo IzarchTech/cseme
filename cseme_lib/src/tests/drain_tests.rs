@@ -1,10 +1,10 @@
 use crate::{
     elements::drain::Drain,
     traits::{
-        concrete::VolumeOfBlinding,
+        concrete::{VolumeOfBlinding, VolumeOfConcrete},
+        excavation::Excavation,
         formwork::AreaOfFormwork,
-        concrete::VolumeOfConcrete, excavation::Excavation
-    }
+    },
 };
 use approx::assert_abs_diff_eq;
 
@@ -70,7 +70,11 @@ fn volume_of_cart_away_test() {
     let mut idx: usize = 0;
 
     for drain in drains {
-        assert_abs_diff_eq!(drain.get_volume_of_cart_away(), expected[idx], epsilon = 0.1);
+        assert_abs_diff_eq!(
+            drain.get_volume_of_cart_away(),
+            expected[idx],
+            epsilon = 0.1
+        );
         idx += 1;
     }
 }
@@ -83,7 +87,11 @@ fn volume_of_excavation_test() {
     let mut idx: usize = 0;
 
     for drain in drains {
-        assert_abs_diff_eq!(drain.get_volume_of_excavation(), expected[idx], epsilon = 0.1);
+        assert_abs_diff_eq!(
+            drain.get_volume_of_excavation(),
+            expected[idx],
+            epsilon = 0.1
+        );
         idx += 1;
     }
 }
