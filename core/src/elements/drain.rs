@@ -3,7 +3,7 @@ use crate::traits::{
     excavation::Excavation, formwork::AreaOfFormwork,
 };
 
-pub(crate) struct Drain {
+pub struct Drain {
     width: f64,
     span: f64,
     depth: f64,
